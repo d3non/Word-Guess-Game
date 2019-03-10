@@ -1,6 +1,7 @@
 function wordtoguess() {
     //Declare an array of movie names to random
-    var movies = ["THE REVENANT", "GREASE", "KILL BILL", "THE GODFATHER", "THE MATRIX", "TITANIC", "ROMA", "SAVING PRIVATE RYAN", "AMELIE" , "DRIVE"];
+    var movies = ["THE REVENANT", "GREASE", "KILL BILL", "THE GODFATHER", "THE MATRIX", "TITANIC", "ROMA", "SAVING PRIVATE RYAN", "AMELIE" , "DRIVE", "FROZEN",
+                "AMERICAN HUSTLE", "THOR", "THE HUNGER GAMES"];
     //Get a randomize index of the array movie name
     var wordtoguess = movies[Math.floor(Math.random()*movies.length)];
     return wordtoguess;

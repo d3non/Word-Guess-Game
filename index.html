@@ -81,6 +81,16 @@
                     }
                 }else{
                     remaining--;
+                    if(remaining===0){
+                        guessed = "";
+                        numguess = 0;
+                        document.getElementById("wordtoguess").innerHTML = wordtoguess();
+                        document.getElementById("guessword").innerHTML = convertWordtoguess(document.getElementById("wordtoguess").textContent);
+                        document.getElementById("lettersg").innerHTML = "";
+                        document.getElementById("wins").innerHTML = wins;
+                        word = document.getElementById("wordtoguess").textContent;
+                        remaining = word.length;
+                    }
                     document.getElementById("remaining").innerHTML = remaining;
                 }
 
