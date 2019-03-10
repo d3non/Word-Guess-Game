@@ -1,0 +1,33 @@
+body{
+    background-image: url("../images/movies.jpg");
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+
+  li {
+    float: left;
+  }
+
+  h3{
+    font-family: fantasy;  
+    font-size: 20px;
+    text-align: center;
+
+  }
+  .centerbox{
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .guessword{
+
+    text-align: center;
+  }

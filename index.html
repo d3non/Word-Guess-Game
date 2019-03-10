@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/javascript/game.js"></script>
+  <title>Word guess</title>
+</head>
+<body>
+
+  <h1>Word Guessing</h1>
+  <hr>
+  <div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8" styles="">
+            <div class="jumbotron jumbotron-fluid">
+                <h3>Press any key to get started!</h3><br><br>
+                <div>Number of wins: <p id="wins"></p></div>
+                <div>Number of Guesses Remaining: <p id="remaining"></p></div>
+                <div>Letters Already Guessed: <p id="lettersg"></p></div><br><br>
+                <div id="guessword"></div><div id="wordtoguess" hidden="true"></div>
+            </div>
+        </div>
+    <div class="col-2"></div>
+</div>
+</div>
+  
+  <script type="text/javascript">
+      var wins = 0;
+      var guessed = "";
+      var remaining = 0;
+      var numguess = 0;
+      var word = "";
+      document.onkeyup = function (event) {
+            // Captures the key press, converts it to lowercase, and saves it to a variable.
+            var letter = event.key.toUpperCase();
+           
+            if(document.getElementById("guessword").textContent!= ""){
+                // If the letter is h, run the following functions/methods.
+                word = document.getElementById("wordtoguess").textContent;
+                if(remaining===0){
+                    remaining = word.length;
+                }
+                document.getElementById("remaining").innerHTML = remaining;
+                console.log(word);
+                console.log(letter);
+                var arreglo1 = Array.from(word);
+
+                var index = 0;
+                var arreglo2 = [];
+                for(i = 0; i < arreglo1.length; i++){
+                    if (letter === arreglo1[i])
+                        arreglo2.push(i);
+                }
+
+                console.log(arreglo2);
+                if(arreglo2.length != 0){
+                    numguess = numguess + arreglo2.length;
+                    for(i=0; i < arreglo2.length; i++){
+                        document.getElementById("letter"+arreglo2[i]).innerHTML = letter;
+                        guessed = guessed + letter;
+                        document.getElementById("lettersg").innerHTML = guessed;
+                    }
+
+                    console.log(numguess);
+                    console.log(word.length);
+                    if(numguess===word.length){
+                        wins++;
+                        guessed = "";
+                        numguess = 0;
+                        document.getElementById("wordtoguess").innerHTML = wordtoguess();
+                        document.getElementById("guessword").innerHTML = convertWordtoguess(document.getElementById("wordtoguess").textContent);
+                        document.getElementById("lettersg").innerHTML = "";
+                        document.getElementById("wins").innerHTML = wins;
+                        word = document.getElementById("wordtoguess").textContent;
+                        remaining = word.length;
+                        document.getElementById("remaining").innerHTML = remaining;
+                    }
+                }else{
+                    remaining--;
+                    document.getElementById("remaining").innerHTML = remaining;
+                }
+
+            }else{
+                document.getElementById("wordtoguess").innerHTML = wordtoguess();
+                document.getElementById("guessword").innerHTML = convertWordtoguess(document.getElementById("wordtoguess").textContent);
+            }
+        }; 
+
+  </script>
+
+
+
+</body>
+</html>
